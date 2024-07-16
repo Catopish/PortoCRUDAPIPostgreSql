@@ -11,7 +11,7 @@
         <% } %>
     <div class="card-body">
       <h5 class="card-title"><%=result[i].show.name%></h5>
-      <p class="card-text"><%=result[i].show.summary.replace(/<\/?p>/g, "")%></p>
+      <p class="card-text"><%=result[i].show.summary.replace(/<\/?p>/g, "").replace(/<\/?b>/g, "").replace(/<\/?i>/g, "")%></p>
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
   </div>
