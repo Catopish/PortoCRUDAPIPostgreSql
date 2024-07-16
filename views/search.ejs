@@ -1,22 +1,28 @@
-<%- include('partials/header') %>
+<%- include('partials/header', {query})%>
   <body>
-  <%- include("partials/navbar") %>
-  <div class="d-inline-flex p-2">
-    <% for (let i = 0; i < 5; i++) { %>
-  <div class="card" style="width: 18rem; margin:15px;">
-    <% if (result[i].show.image) { %>
-    <img src="<%= result[i].show.image.medium %>" class="card-img-top" alt="...">
-        <% } else { %>
-    <img src="https://www.shoshinsha-design.com/wp-content/uploads/2020/05/noimage-760x460.png" class="card-img-top" alt="...">
-        <% } %>
-    <div class="card-body">
-      <h5 class="card-title"><%=result[i].show.name%></h5>
-      <p class="card-text"><%=result[i].show.summary.replace(/<\/?p>/g, "").replace(/<\/?b>/g, "").replace(/<\/?i>/g, "")%></p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+  <%- include("partials/navbar")%>
+    <div class="d-inline-flex flex-wrap justify-content-center">
+      <% for (let i = 0; i < result.length; i++) { %>
+        <div class="card" style="width: 18rem; margin:15px;">
+      <% if (result[i].show.image) { %>
+            <img name='imgSrc'src="<%= result[i].show.image.medium %>" class="card-img-top" alt="...">
+          <% } else { %>
+            <img src="https://www.shoshinsha-design.com/wp-content/uploads/2020/05/noimage-760x460.png" class="card-img-top" alt="...">
+          <% } %>
+        <div class="card-body">
+          <h5 class="card-title" name='movieTitle'><%=result[i].show.name%></h5>
+          <p class="card-text" name='movieSummary'><%=result[i].show.summary.replace(/<\/?p>/g, "").replace(/<\/?b>/g, "").replace(/<\/?i>/g, "")%></p>
+          <form action="/review" method="POST">
+            <input type="hidden" name="movieId" value="<%= result[i].show.name %>">
+            <input type="hidden" name="movieTitle" value="<%= result[i].show.name %>">
+            <input type="hidden" name="movieSummary" value="<%= result[i].show.summary.replace(/<\/?p>/g, "").replace(/<\/?b>/g, "").replace(/<\/?i>/g, "") %>">
+            <input type="hidden" name="imgSrc" value="<%= result[i].show.image ? result[i].show.image.medium : 'https://www.shoshinsha-design.com/wp-content/uploads/2020/05/noimage-760x460.png' %>">
+          <button type="submit" class="btn btn-primary">Review</button>
+          </form>
+        </div>
+      </div>
+      <% } %>
     </div>
-  </div>
-   <% } %>
-  </div>
   </body>
 </html>
 
