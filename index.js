@@ -28,14 +28,19 @@ app.get("/search", async (req, res) => {
   }
 });
 
+app.post("/review/new", (req, res) => {
+  const movieTitle = req.body.movieTitle;
+  const movieSummary = req.body.movieSummary;
+  const movieImg = req.body.imgSrc;
+  const movieComment = req.body.comment;
+});
+
 app.post("/review", (req, res) => {
-  const movieId = req.body.movieId;
   const movieTitle = req.body.movieTitle;
   const movieSummary = req.body.movieSummary;
   const movieImg = req.body.imgSrc;
   res.render("newreview", {
-    query: movieId,
-    movieId,
+    query: movieTitle,
     movieTitle,
     movieSummary,
     movieImg,

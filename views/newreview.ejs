@@ -18,8 +18,11 @@
       <form action="/review/new" method="POST" style="margin-left:10px">
         <div class="mb-3">
           <label for="exampleFormControlTextarea1" class="form-label">Review Box</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <textarea name='comment' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
+        <input type="hidden" name="movieTitle" value="<%=movieTitle%>">
+        <input type="hidden" name="movieSummary" value="<%=movieSummary%>">
+        <input type="hidden" name="imgSrc" value="<%=movieImg%>">
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
