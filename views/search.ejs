@@ -12,7 +12,7 @@
         <div class="card-body">
           <h5 class="card-title" name='movieTitle'><%=result[i].show.name%></h5>
           <p class="card-text" name='movieSummary'><%=result[i].show.summary.replace(/<\/?p>/g, "").replace(/<\/?b>/g, "").replace(/<\/?i>/g, "")%></p>
-          <form action="/review" method="POST">
+          <form action="/review/new" method="POST">
             <input type="hidden" name="movieId" value="<%= result[i].show.name %>">
             <input type="hidden" name="movieTitle" value="<%= result[i].show.name %>">
             <input type="hidden" name="movieSummary" value="<%= result[i].show.summary.replace(/<\/?p>/g, "").replace(/<\/?b>/g, "").replace(/<\/?i>/g, "") %>">
