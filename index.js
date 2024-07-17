@@ -57,7 +57,8 @@ app.get("/search", async (req, res) => {
 
 app.get("/review", async (req, res) => {
   const result = await checkDatabase();
-  res.send(result);
+  // res.send(result);
+  res.render("reviewed", { result, query: null });
 });
 
 app.post("/review/newpost", async (req, res) => {
@@ -74,7 +75,7 @@ app.post("/review/newpost", async (req, res) => {
     movieComment,
     movieId,
   ]);
-  res.redirect("/");
+  res.redirect("/review");
 });
 
 app.post("/review/new", (req, res) => {

@@ -1,0 +1,26 @@
+<%- include('partials/header', {query})%>
+  <body>
+  <%- include("partials/navbar")%>
+    <div class="d-inline-flex flex-wrap justify-content-center">
+      <% for (let i = 0; i < result.length; i++) { %>
+        <div class="card" style="width: 18rem; margin:15px;">
+      <% if (result[i].img) { %>
+            <img name='imgSrc'src="<%= result[i].img %>" class="card-img-top" alt="...">
+          <% } else { %>
+            <img src="https://www.shoshinsha-design.com/wp-content/uploads/2020/05/noimage-760x460.png" class="card-img-top" alt="...">
+          <% } %>
+        <div class="card-body">
+          <h5 class="card-title" name='movieTitle'><%=result[i].title%></h5>
+          <p class="card-text" name='movieSummary'><%=result[i].summary%></p>
+          <div class="card" style="max-width: 18rem;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><%= result[i].comment_body %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </body>
+</html>
+
